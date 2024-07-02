@@ -1,0 +1,30 @@
+body{
+    display: flex;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+    background-color: indigo;
+}
+
+.main-card{
+    background-color: beige;
+    min-width: 500px;
+    min-height: 200px;
+
+}
+.search{
+    display: flex;
+}
+.button{
+    background-color: darkgoldenrod;
+    height: 30px;
+    width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.todo{
+    width: 150px;
+    border: 1px solid grey;
+}

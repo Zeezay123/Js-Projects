@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Todo.css">
+    <title> To-Do</title>
+</head>
+<body>
+    <div class="main-card" id="Mcard"> 
+        <h5> To-Do List</h5>
+        <div class="search">  <input class="todo" id="todo" type="text" name="todo" placeholder="Add text">
+        <div id="button" class="button"> Add </div>
+     </div>
+    </div>
+
+
+
+
+
+
+    <script>
+        let todo = document.getElementById('todo');
+        let btn =  document.getElementById('button');
+        let Mcard = document.getElementById('Mcard');
+
+
+        btn.addEventListener("click", ()=>{
+            let newTodo = todo.value;
+            let div = document.createElement('div');
+            let x = document.createElement('div');
+            let conDiv = document.createElement('div');
+            let box = document.createElement('INPUT');
+            box.setAttribute('type', 'checkbox');
+            let tBox = document.createElement('div')
+            
+            
+            
+            div.textContent = newTodo;
+            x.textContent = 'x'
+            
+            tBox.append(box)
+            tBox.append(div)
+
+            tBox.style.display = 'flex';
+            tBox.style.gap = '10px'
+
+            conDiv.append(tBox)
+            conDiv.append(x)
+
+            conDiv.style.display = 'flex';
+            conDiv.style.gap = '40px'
+
+            Mcard.append(conDiv)
+
+
+
+           tBox.addEventListener("click", () => {
+            box.checked = !box.checked;
+            if(box.checked){
+            div.style.textDecoration = 'line-through';
+            }
+            else {
+                div.style.textDecoration = 'none';
+            }
+           })
+
+            x.addEventListener("click", ()=>{
+                Mcard.removeChild(conDiv)
+            })
+           
+
+
+            console.log(conDiv)
+        })
+
+        
+ 
+       
+        
+    </script>
+</body>
+</html>

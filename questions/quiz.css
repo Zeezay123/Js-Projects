@@ -1,0 +1,116 @@
+body{
+    background-color: darkslateblue;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.both{
+ display: flex;
+ position: relative;
+ justify-content: center;
+}
+.main-card{
+    margin-top: 60px;
+    width: 500px;
+    height: 450px;
+    background-color: aliceblue;
+    color: black;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-left: 40px;
+    padding-right: 40px;
+    border-radius: 12px;
+    word-wrap: break-word;
+    
+}
+
+.b_line{
+    border-bottom: 1px solid black;
+    width: 100%;
+    margin-bottom: 40px;
+}
+
+.qpart{
+    margin-bottom: 60px;
+    width: 100%;
+}
+.next{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px 15px; 
+    background-color:cornflowerblue;
+    border-radius: 5px;
+    color: black;
+    font-weight: bold;
+    margin-left: 80%;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.answers{
+ display: flex;
+ flex-direction: column;
+ width: 100%;
+}
+
+div.answers > div {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    border: 1px solid black;
+    height: 35px;
+    margin-bottom: 8px;
+    padding-left: 5px;
+    border-radius: 3px;
+    
+}
+
+div.answers > div:hover{
+    background-color: lightslategrey;
+}
+
+
+.score-card{
+    margin-top: 60px;
+    width: 500px;
+    height: 450px;
+    background-color: aliceblue;
+    color: black;
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-left: 40px;
+    padding-right: 40px;
+    border-radius: 12px;
+    word-wrap: break-word;
+    position: absolute;
+
+}
+.tScore{
+    margin-top: 10%;
+    width: 100%;
+    font-size: 16px;
+    font-weight: 500;
+    margin-left: 30px;
+
+}
+
+.reload{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 20px; 
+    background-color:cornflowerblue;
+    border-radius: 5px;
+    color: black;
+    font-weight: bold;
+    margin-left: 40%;
+    margin-top: 30%;
+    cursor: pointer;
+   
+}

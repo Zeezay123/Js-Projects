@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password</title>
+    <link rel="stylesheet" href="pass.css">
+</head>
+<body>
+     
+<div class="gPassword">
+   <h3>Generate a <span> Password </span></h3>
+    
+    <div class="pass"> <div id="pass" class="Tpass">Password </div> <div id="copy">copy!</div></div>
+
+    <div class="button" id="button"> Generate Password </div>
+</div>
+
+
+<script>
+
+    let inputText = document.getElementById('pass');
+    let btn = document.getElementById('button');
+    let copy = document.getElementById('copy');
+
+    let code = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789/*&%$#@!)()<>";
+    let length = 12;
+
+
+btn.addEventListener('click', ()=>{
+
+
+  const newCode = genPass(length)
+inputText.textContent = newCode;
+console.log(newCode)
+
+});
+
+const genPass =(length)=>{
+    let result =''
+    const codelent = code.length;
+    let j = 0;
+    for(let i=0; i < length; i++){
+
+    j= Math.floor(Math.random() * codelent)
+ result += code.charAt(j)
+
+}
+
+copy.addEventListener('click', ()=>{
+    navigator.clipboard.writeText(inputText.textContent);
+    alert('pass copied')
+})
+
+return result;
+}
+
+
+</script>
+</body>
+</html>

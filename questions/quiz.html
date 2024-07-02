@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz</title>
+    <link rel="stylesheet" href="quiz.css">
+</head>
+<body>
+    <div class="both">
+        <div class="main-card" id="mCard"> 
+
+            <div class="b_line">
+    
+                <h3>Simple Quiz</h3>
+            </div> 
+    
+            <div class="qpart" id="quest"> What is the largest desert in the world</div>
+    
+            <div class="answers" id="ans"></div>
+            
+            <div class="next" id="next">
+               Next
+            </div>
+    
+        </div>
+        <div class='score-card' id='scard'>
+         <div id="tScore" class="tScore"> </div>
+         <div id="reload" class="reload" onclick="fetchData()"> Restart </div>
+         </div>
+
+    </div>
+ 
+
+
+
+
+    <script>
+     let mCard = document.getElementById('mCard')
+     let quest = document.getElementById('quest');
+     let ans = document.getElementById('ans');
+     let nxt = document.getElementById('next');
+
+     let scard = document.getElementById('scard');
+     let tScore = document.getElementById('tScore');
+     let reload = document.getElementById('reload');
+
+
+     let a = document.createElement('div')
+     let b = document.createElement('div')
+     let c = document.createElement('div')
+     let d = document.createElement('div')
+   
+     let answered = false;
+
+     let score = 0;
+     let result = '';
+     let j = 0;
+     let Q = [];
+     let cor = []; 
+     let inCor = [];
+     let choice = [];
+
+
+    
+    
+  const randFUnc = (arr)=>
+     {
+    for(let i = arr.length - 1; i > 0; i--){
+        const j = Math.floor(Math.random() * (i + 1));
+        [arr[i], arr[j]] = [arr[j], arr[i]]
+    }
+      return arr;
+}
+
+  const loadQs =()=>{
+    quest.innerText  = Q[j]
+                
+    const [wrOne, wrTwo, wrThree] = inCor[j]
+
+
+
+a.style.backgroundColor = ''
+b.style.backgroundColor = ''
+c.style.backgroundColor = ''
+d.style.backgroundColor = ''
+answered = false;
+
+ if(choice[j] == "multiple")
+ 
+     {
+        const mixAnwers = randFUnc([cor[j],wrOne, wrTwo, wrThree])
+
+
+         const [fstOpt, secOpt, trdOpt, frtOpt] = mixAnwers
+
+
+        a.innerText  = fstOpt;
+        b.innerText  = secOpt;
+        c.innerText  = trdOpt;
+        d.innerText = frtOpt;
+
+           ans.innerHTML='';
+             ans.appendChild(a);
+             ans.appendChild(b);
+             ans.appendChild(c);
+             ans.appendChild(d);
+       
+   
+         }
+        
+  else if (choice[j] == "boolean") {
+
+const mixAnwers = randFUnc([cor[j], wrOne])
+    
+
+const [fstOpt, secOpt] = mixAnwers
+   
+        a.innerText  = fstOpt;
+        b.innerText  = secOpt
+        ans.innerHTML='';
+         ans.appendChild(a);
+             ans.appendChild(b);
+
+        }         
+    }   
+
+    
+     
+    const fetchData =()=>
+    {
+
+
+        fetch('https://opentdb.com/api.php?amount=10')
+        .then( response => {
+            if(response.ok){
+                return response.json();
+            }
+            else {
+                throw new Error('error reaching api');
+            }
+        })
+
+        .then(data => {
+           let qT = data.results;
+         
+           Q = [];
+                cor = [];
+                inCor = [];
+                choice = [];
+
+        
+          for  (  let i = 0;  i <= data.results.length -1; i++){
+              
+           Q.push(qT[i].question);
+           cor.push(qT[i].correct_answer);
+           inCor.push(qT[i].incorrect_answers);
+           choice.push(qT[i].type)
+ 
+          }
+          j = 0;
+                score = 0;
+
+            
+            
+          mCard.style.display = 'flex';
+          scard.style.display = 'none';
+
+
+
+
+
+       nxt.onclick = () => {
+    j += 1;
+    if (j < Q.length) {
+        loadQs();
+    } else {
+        result = `Your Final Score is ${score}`;
+        tScore.textContent = result;
+        mCard.style.display = 'none';
+        scard.style.display = 'flex';
+    }
+};
+        
+       loadQs();
+
+   const selectedOption = [a, b, c, d]
+   
+    selectedOption.forEach(element => {
+        element.onclick =()=>{
+        element.addEventListener('click', () => {
+                if(answered) return;
+                answered = true;   
+
+            selectedOption.forEach(el => el.style.backgroundColor = '');
+            element.style.backgroundColor = 'red';
+
+              if (element.innerText === cor[j]) {
+                        score += 1;
+                    }
+                 
+        });
+     
+    }
+   });
+
+
+
+
+   
+
+  
+         
+       
+        })
+    
+    
+        .catch(error => {
+            console.error(error)
+        })
+    }
+
+const reloadQuiz =()=>{
+    fetchData();
+
+}
+     
+fetchData();
+
+
+
+
+ 
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+body{
+    margin: 0;
+    padding: 0;
+    background-color: midnightblue;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.gPassword{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 250px;
+    padding: 50px ;
+    background-color: antiquewhite;
+    margin-top: 60px;
+}
+
+.button{
+ 
+    background-color: aquamarine;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 150px;
+    padding: 3px;
+    height: 28px;
+    border-radius: 12px;
+    
+}
+.pass{
+    height: 38px;
+    width: 250px;
+    padding-left: 5px;
+    border: 1px solid white;
+    border-radius: 4px;
+    background-color: azure;
+    display: flex;
+    align-items: center;
+    
+}
+
+
+
+.Tpass{
+    width: 84%;
+}
